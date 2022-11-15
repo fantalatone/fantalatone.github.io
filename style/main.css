@@ -1,0 +1,80 @@
+@import url("./variables.css");
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-bg);
+    font-family: var(--primary-font);
+    color: white;
+}
+
+header {
+    position: relative;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 75px;
+}
+
+header > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 120px;
+}
+
+header > hr {
+    width: 90vw;
+    height: 1px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 0;
+    background-color: var(--secondary-bg);
+    border: none;
+}
+
+.portfolio-navigation {
+    height: 80vh;
+    display: flex;
+    padding: 0px 30px 30px;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.portfolio-navigation .portfolio-card {
+    width: 0;
+    flex-grow: 1;
+    height: 100%;
+    padding: 16px;
+    transition: flex-grow ease-in-out 400ms, height ease-in-out 400ms, opacity ease-in-out 200ms;
+    background-image: linear-gradient(to top, transparent, #252525 100%);
+}
+
+.portfolio-card#mods {
+    border-top-left-radius: 20px;
+    --hover: #91e443;
+}
+.portfolio-card#games {
+    --hover: #e44343;
+}
+.portfolio-card#graphic {
+    border-top-right-radius: 20px;
+    --hover: #4361e4;
+}
+
+.portfolio-card:hover {
+    flex-grow: 4;
+    height: calc(100% + 20px);
+    background-image: linear-gradient(to top, transparent, var(--hover) 100%)
+}
+
+.portfolio-navigation:hover:has( > .portfolio-card:hover) > .portfolio-card:not(:hover) {
+    opacity: 40%;
+}
